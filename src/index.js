@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {ThemeProvider} from 'styled-components';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {httpInterceptor} from './apis/axios';
+import theme from './styles/theme';
+
+httpInterceptor.setupInterceptors();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider {...{theme}}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
